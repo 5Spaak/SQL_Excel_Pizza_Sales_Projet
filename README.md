@@ -35,64 +35,45 @@
 
 3. **--Total Revenue**
    
-`SELECT CAST(SUM(total_price) as decimal(10,2)) as Revenue 
- FROM pizza_sales;`
+`SELECT CAST(SUM(total_price) as decimal(10,2)) as Revenue FROM pizza_sales;`
 
 4. **-- Total Pizza Sold**
    
-`SELECT SUM(quantity) as Total_Pizza_Sold
- FROM pizza_sales;`
+`SELECT SUM(quantity) as Total_Pizza_Sold FROM pizza_sales;`
 
 3. **-- Total Orders**
-`SELECT COUNT(DISTINCT(order_id))
- FROM pizza_sales;`
+   
+`SELECT COUNT(DISTINCT(order_id)) FROM pizza_sales;`
 
 5. **-- Average Order Value**
 
-`SELECT CAST(CAST(SUM(total_price) as decimal(10,2))/CAST(COUNT(DISTINCT(order_id)) as decimal(10,2)) as decimal(10,2))
-FROM pizza_sales;`
+`SELECT CAST(CAST(SUM(total_price) as decimal(10,2))/CAST(COUNT(DISTINCT(order_id)) as decimal(10,2)) as decimal(10,2)) FROM pizza_sales;`
 
 7. **-- Average Pizza Sold Per Order**
 
-`SELECT SUM(quantity)/COUNT(DISTINCT(order_id))
-FROM pizza_sales;`
+`SELECT SUM(quantity)/COUNT(DISTINCT(order_id)) FROM pizza_sales;`
 
 9. **--Daily Trend for Total Orders**
 
-`SELECT COUNT(DISTINCT(order_id)) AS Total_Order, DATENAME(WEEKDAY,order_date) AS Weekdays
-FROM pizza_sales
-GROUP BY DATENAME(WEEKDAY,order_date);`
+`SELECT COUNT(DISTINCT(order_id)) AS Total_Order, DATENAME(WEEKDAY,order_date) AS Weekdays FROM pizza_sales GROUP BY DATENAME(WEEKDAY,order_date);`
 
 11. **-- Hourly Trend for Total Orders**
     
-`SELECT COUNT(DISTINCT(order_id)) AS Total_Order, DATEPART(HOUR, order_time) AS order_hours
-FROM pizza_sales
-GROUP BY DATEPART(HOUR, order_time) 
-ORDER BY order_hours`
+`SELECT COUNT(DISTINCT(order_id)) AS Total_Order, DATEPART(HOUR, order_time) AS order_hours FROM pizza_sales GROUP BY DATEPART(HOUR, order_time) ORDER BY order_hours`
 
 13. **-- Percentage of Sales by Pizza Category**
     
-`SELECT pizza_category, (SUM(total_price)/(SELECT SUM(total_price) FROM pizza_sales))*100
-FROM pizza_sales 
-GROUP BY pizza_category;`
+`SELECT pizza_category, (SUM(total_price)/(SELECT SUM(total_price) FROM pizza_sales))*100 FROM pizza_sales GROUP BY pizza_category;`
 
 15. **-- Total Pizzas Sold by Pizza category**
     
-`SELECT pizza_category, SUM(quantity) AS Total_Pizza_Sold
-FROM pizza_sales
-GROUP BY pizza_category`;
+`SELECT pizza_category, SUM(quantity) AS Total_Pizza_Sold FROM pizza_sales GROUP BY pizza_category`;
 
 17. **-- Top 5 Best Sellers by total Pizzas Sold**
     
-`SELECT TOP 5 pizza_name, SUM(quantity) AS Pizza_Sold
-FROM pizza_sales
-GROUP BY pizza_name
-ORDER BY Pizza_Sold DESC`;
+`SELECT TOP 5 pizza_name, SUM(quantity) AS Pizza_Sold FROM pizza_sales GROUP BY pizza_name ORDER BY Pizza_Sold DESC`;
 
 19. **-- Bottom 5 Worst Sellers by Total Pizzas Sold**
     
-`SELECT TOP 5 pizza_name, SUM(quantity) AS Pizza_Sold
-FROM pizza_sales
-GROUP BY pizza_name
-ORDER BY Pizza_Sold ASC`;
+`SELECT TOP 5 pizza_name, SUM(quantity) AS Pizza_Sold FROM pizza_sales GROUP BY pizza_name ORDER BY Pizza_Sold ASC`;
 
