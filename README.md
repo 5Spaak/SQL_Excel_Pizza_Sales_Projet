@@ -79,5 +79,8 @@
 
 
 ## Pizza Sales Dashboard Excel 
-
+#### V1
 |![Pizza Sales Dashboard Excel](PizzaSales.png)|
+
+#### V2
+|![Pizza Sales Dashboard Excel](PizzaSales1.png)|
