@@ -29,10 +29,10 @@
 
 ## DATA ANALYSIS USING SQL SERVER
 
-**-- Database**
+**-- Database**:
 `SELECT * FROM pizza_sales;`
 
-**--Total Revenue**
+**--Total Revenue**:
 `SELECT CAST(SUM(total_price) as decimal(10,2)) as Revenue 
  FROM pizza_sales;`
 
