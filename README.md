@@ -26,3 +26,64 @@
 > Create a bar chart highlighting the top 5 best-selling pizzas based on the total number of pizzas sold. This chart helps us identify the most popular pizza options.
 #### 7.	Bottom 5 Worst Sellers by Total Pizzas Sold:
 > Create a bar chart showcasing the bottom 5 worst-selling pizzas based on the total number of pizzas sold. This chart will enable us to identify underperforming or less popular pizza options.
+
+## DATA ANALYSIS USING SQL SERVER
+
+**-- Database**
+`SELECT * FROM pizza_sales;`
+
+**--Total Revenue**
+`SELECT CAST(SUM(total_price) as decimal(10,2)) as Revenue 
+ FROM pizza_sales;`
+
+**-- Total Pizza Sold** 
+`SELECT SUM(quantity) as Total_Pizza_Sold FROM pizza_sales;`
+
+**-- Total Orders**
+`SELECT COUNT(DISTINCT(order_id)) FROM pizza_sales;`
+
+**-- Average Order Value**
+`SELECT CAST(CAST(SUM(total_price) as decimal(10,2))/CAST(COUNT(DISTINCT(order_id)) as decimal(10,2)) as decimal(10,2))
+FROM pizza_sales;`
+
+-- Average Pizza Sold Per Order
+SELECT SUM(quantity)/COUNT(DISTINCT(order_id))
+FROM pizza_sales
+
+--Daily Trend for Total Orders
+
+SELECT COUNT(DISTINCT(order_id)) AS Total_Order, DATENAME(WEEKDAY,order_date) AS Weekdays
+FROM pizza_sales
+Group by DATENAME(WEEKDAY,order_date)
+
+-- Hourly Trend for Total Orders
+SELECT COUNT(DISTINCT(order_id)) AS Total_Order, DATEPART(HOUR, order_time) AS order_hours
+FROM pizza_sales
+Group by DATEPART(HOUR, order_time) 
+Order by order_hours
+
+-- Percentage of Sales by Pizza Category
+SELECT pizza_category, (SUM(total_price)/(SELECT SUM(total_price) FROM pizza_sales))*100
+FROM pizza_sales 
+GROUP BY pizza_category
+
+
+-- Total Pizzas Sold by Pizza category
+SELECT pizza_category, SUM(quantity) AS Total_Pizza_Sold
+FROM pizza_sales
+GROUP BY pizza_category
+
+
+-- Top 5 Best Sellers by total Pizzas Sold
+
+SELECT TOP 5 pizza_name, SUM(quantity) AS Pizza_Sold
+FROM pizza_sales
+GROUP BY pizza_name
+ORDER BY Pizza_Sold DESC
+
+-- Bottom 5 Worst Sellers by Total Pizzas Sold
+SELECT TOP 5 pizza_name, SUM(quantity) AS Pizza_Sold
+FROM pizza_sales
+GROUP BY pizza_name
+ORDER BY Pizza_Sold ASC
+
