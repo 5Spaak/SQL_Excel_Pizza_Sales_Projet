@@ -83,4 +83,4 @@
 |![Pizza Sales Dashboard Excel](PizzaSales.png)|
 
 #### V2
-|![Pizza Sales Dashboard Excel](PizzaSales1.png)|
+|![Pizza Sales Dashboard Excel](PizzaSales1.PNG)|
