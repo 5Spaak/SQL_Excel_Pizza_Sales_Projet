@@ -77,3 +77,7 @@
     
 `SELECT TOP 5 pizza_name, SUM(quantity) AS Pizza_Sold FROM pizza_sales GROUP BY pizza_name ORDER BY Pizza_Sold ASC`;
 
+
+## Pizza Sales Dashboard Excel 
+
+|![Pizza Sales Dashboard Excel](Pizza_Sales.png)|
