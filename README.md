@@ -2,7 +2,7 @@
 
 ## PROBLEM STATEMENT
 ### KPI’S REQUIREMENT
-We need to analyze key indicators for our pizza sales data to gains Insignts into our business performance. Specifically, we want to calculate the following metrics
+> We need to analyze key indicators for our pizza sales data to gains Insignts into our business performance. Specifically, we want to calculate the following metrics
 1. Total Revenue: The sum of total price of all pizza orders
 2.	Average Order Value: The average amount spent per order, calculated by dividing the total revenue by the total number of records
 3.	Total pizza Sold: The sum of the quantities of all pizzas sold
