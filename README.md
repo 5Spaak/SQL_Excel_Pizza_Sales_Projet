@@ -80,4 +80,4 @@
 
 ## Pizza Sales Dashboard Excel 
 
-|![Pizza Sales Dashboard Excel](Pizza_Sales.png)|
+|![Pizza Sales Dashboard Excel](PizzaSales.png)|
